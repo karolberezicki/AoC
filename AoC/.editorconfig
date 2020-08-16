@@ -1,0 +1,12 @@
+﻿root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.cs]
+resharper_class_never_instantiated_global_highlighting=do_not_show
+resharper_unused_type_global_highlighting=do_not_show
+
+# https://www.jetbrains.com/help/resharper/Code_Analysis__Configuring_Warnings.html
+# https://www.jetbrains.com/help/resharper/EditorConfig_Index.html
