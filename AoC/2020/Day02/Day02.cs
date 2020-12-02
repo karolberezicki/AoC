@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -25,10 +24,10 @@ namespace AoC._2020.Day02
 
         private class Password
         {
-            private char LetterRule { get; set; }
-            private int Min { get; set; }
-            private int Max { get; set; }
-            private string Value { get; set; }
+            private char LetterRule { get; }
+            private int Min { get; }
+            private int Max { get; }
+            private string Value { get; }
 
             public Password(string str)
             {
