@@ -14,7 +14,7 @@ namespace AoC
             
             var inputFilepath = Path.GetFullPath(Path.Combine(Program.Config.ProjectPath, $"./{year}/Day{day:D2}/{filename}"));
             var inputUrl = $"https://adventofcode.com/{year}/day/{day}/input";
-            var input = "";
+            var input = "INPUT NOT AVAILABLE";
 
             if (File.Exists(inputFilepath) && new FileInfo(inputFilepath).Length > 0)
             {
