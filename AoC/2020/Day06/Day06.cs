@@ -43,13 +43,10 @@ namespace AoC._2020.Day06
 
         private static Dictionary<char, int> GetLettersDict()
         {
-            var lettersDictionary = new Dictionary<char, int>();
-            for (var i = 'a'; i <= 'z'; i++)
-            {
-                lettersDictionary[i] = 0;
-            }
 
-            return lettersDictionary;
+            return Enumerable
+                .Range('a', 'z')
+                .ToDictionary(k => (char) k, v => 0);
         }
     }
 }
