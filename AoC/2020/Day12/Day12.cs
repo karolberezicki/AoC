@@ -17,41 +17,22 @@ namespace AoC._2020.Day12
             Console.WriteLine($"Part2 {part2}");
         }
 
-        private static char ChangeDirection(char currentDirection, char action, int value)
+        private static char ChangeDirection(char direction, int value)
         {
-            var direction = currentDirection;
-            if (action == 'R' && value == 270)
+            direction = direction switch
             {
-                action = 'L';
-                value = 90;
-            }
-
-            if (action == 'R' && value == 180)
-            {
-                action = 'L';
-                value = 180;
-            }
-
-            if (action == 'R' && value == 90)
-            {
-                action = 'L';
-                value = 270;
-            }
-
-            direction = action switch
-            {
-                'L' when value == 90  && direction == 'N' => 'W',
-                'L' when value == 90  && direction == 'W' => 'S',
-                'L' when value == 90  && direction == 'S' => 'E',
-                'L' when value == 90  && direction == 'E' => 'N',
-                'L' when value == 180 && direction == 'N' => 'S',
-                'L' when value == 180 && direction == 'W' => 'E',
-                'L' when value == 180 && direction == 'S' => 'N',
-                'L' when value == 180 && direction == 'E' => 'W',
-                'L' when value == 270 && direction == 'N' => 'E',
-                'L' when value == 270 && direction == 'W' => 'N',
-                'L' when value == 270 && direction == 'S' => 'W',
-                'L' when value == 270 && direction == 'E' => 'S',
+                'N' when value == 90 => 'W',
+                'W' when value == 90 => 'S',
+                'S' when value == 90 => 'E',
+                'E' when value == 90 => 'N',
+                'N' when value == 180 => 'S',
+                'W' when value == 180 => 'E',
+                'S' when value == 180 => 'N',
+                'E' when value == 180 => 'W',
+                'N' when value == 270 => 'E',
+                'W' when value == 270 => 'N',
+                'S' when value == 270 => 'W',
+                'E' when value == 270 => 'S',
                 _ => direction
             };
 
@@ -64,6 +45,7 @@ namespace AoC._2020.Day12
             var direction = 'E';
 
             foreach (var instruction in instructions)
+            {
                 switch (instruction)
                 {
                     case ('N', var value):
@@ -79,10 +61,16 @@ namespace AoC._2020.Day12
                         position = (position.X - value, position.Y);
                         break;
                     case ('L', var value):
-                        direction = ChangeDirection(direction,'L', value);
+                        direction = ChangeDirection(direction, value);
                         break;
                     case ('R', var value):
-                        direction = ChangeDirection(direction, 'R', value);
+                        value = value switch
+                        {
+                            270 => 90,
+                            90 => 270,
+                            _ => value
+                        };
+                        direction = ChangeDirection(direction, value);
                         break;
                     case ('F', var value):
                         position = direction switch
@@ -95,10 +83,9 @@ namespace AoC._2020.Day12
                         };
                         break;
                 }
+            }
 
-            var test1 = Math.Abs(position.X) + Math.Abs(position.Y);
-
-            return test1;
+            return Math.Abs(position.X) + Math.Abs(position.Y);
         }
 
         private static int Part2(IEnumerable<(char Action, int Value)> instructions)
