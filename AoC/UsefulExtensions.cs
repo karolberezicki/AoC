@@ -11,5 +11,18 @@ namespace AoC
             yield return (point.x + 1, point.y);
             yield return (point.x, point.y + 1);
         }
+
+        public static IEnumerable<(int x, int y)> Adjacent(this (int x, int y) point)
+        {
+            yield return (point.x, point.y - 1);
+            yield return (point.x - 1, point.y);
+            yield return (point.x + 1, point.y);
+            yield return (point.x, point.y + 1);
+
+            yield return (point.x - 1, point.y - 1);
+            yield return (point.x + 1, point.y - 1);
+            yield return (point.x - 1, point.y + 1);
+            yield return (point.x + 1, point.y + 1);
+        }
     }
 }
