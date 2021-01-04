@@ -22,8 +22,8 @@ namespace AoC
             }
             else
             {
-                if (TimeZoneInfo.ConvertTime(DateTime.Now,
-                    TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time")) >= new DateTime(year, 12, day))
+                var currentEasternStandardTime = DateTime.UtcNow - TimeSpan.FromHours(5);
+                if (currentEasternStandardTime >= new DateTime(year, 12, day))
                 {
                     try
                     {
