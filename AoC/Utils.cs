@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 
 namespace AoC
 {
@@ -27,9 +28,9 @@ namespace AoC
                 {
                     try
                     {
-                        using var client = new WebClient();
-                        client.Headers.Add(HttpRequestHeader.Cookie, $"session={Program.Config.SessionCookie}");
-                        input = client.DownloadString(inputUrl);
+                        using var client = new HttpClient();
+                        client.DefaultRequestHeaders.Add("Cookie", $"session={Program.Config.SessionCookie}");
+                        input = client.GetStringAsync(inputUrl).GetAwaiter().GetResult();
                         File.WriteAllText(inputFilepath, input);
                     }
                     catch (WebException e)
