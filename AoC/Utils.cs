@@ -52,6 +52,13 @@ namespace AoC
                         }
                     }
                 }
+                else
+                {
+                    var eta = new DateTime(year, 12, day) - currentEasternStandardTime;
+                    var message = $"Puzzle is not yet open! ETA: {(int)eta.TotalHours:D2}:{eta.Minutes:D2}:{eta.Seconds:D2}";
+                    Console.Error.WriteLine(message);
+                    throw new Exception(message);
+                }
             }
 
             return input;
