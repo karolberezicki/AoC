@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 
 namespace AoC
@@ -11,7 +12,11 @@ namespace AoC
         {
             Config = GetConfig();
             var solution = GetSolution();
+            var watch = new Stopwatch();
+            watch.Start();
             solution.Execute();
+            watch.Stop();
+            Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
 
         private static ISolution GetSolution()
