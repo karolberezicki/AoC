@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace AoC._2021.Day07
 {
@@ -6,7 +7,7 @@ namespace AoC._2021.Day07
     {
         public void Execute()
         {
-            var input = Utils.LoadInputLines();
+            var input = Utils.LoadInput().Split(',').Select(int.Parse).ToList();
 
             var part1 = "";
             var part2 = "";
