@@ -8,14 +8,12 @@ namespace AoC._2021.Day07
         public void Execute()
         {
             var input = Utils.LoadInput().Split(',').Select(int.Parse).ToList();
-            var min = input.Min();
-            var max = input.Max();
 
-            var part1 = Enumerable.Range(min, max - min)
-                .Select(move => input.Select(position => Math.Abs(position - move)).Sum()).Min();
+            var move1 = input.OrderBy(i => i).ToList()[input.Count / 2];
+            var part1 = input.Select(position => Math.Abs(position - move1)).Sum();
 
-            var part2 = Enumerable.Range(min, max - min)
-                .Select(move => input.Select(position => Enumerable.Range(1, Math.Abs(position - move)).Sum()).Sum()).Min();
+            var move2 = (int)Math.Floor(input.Average());
+            var part2 = input.Select(position => Enumerable.Range(1, Math.Abs(position - move2)).Sum()).Sum();
 
             Console.WriteLine($"Part1 {part1}");
             Console.WriteLine($"Part2 {part2}");
