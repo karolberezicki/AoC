@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <UserSecretsId>10555e68-de7d-4e32-ad57-0625ae9cabb3</UserSecretsId>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
